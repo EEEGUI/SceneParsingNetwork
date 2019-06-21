@@ -1,0 +1,46 @@
+arch: icnet
+data:
+    dataset: cityscapes
+    path: /home/lin/Documents/dataset/Cityscapes/
+    train_split: train
+    val_split: train
+model:
+    multi_results: False
+    n_classes: 19
+    input_size: [513, 1025]
+    block_config: [3, 4, 6, 3]
+training:
+    train_iters: 500
+    batch_size: 1
+    accu_steps: 1
+    val_interval: 10
+    print_interval: 1
+    img_size: [513, 1025]
+    argumentation:
+        random_hflip: 0.5
+        random_rotate: 8
+    optimizer:
+        lr: 0.01
+        momentum: 0.9
+    optimizer_loss:
+        lr: 0.001
+    schedule:
+        gamma: 2
+    loss:
+        loss_weights: 0
+        delta1: 0
+        delta2: 1
+    resume:
+    visdom: False
+
+testing:
+    model_path: runs/icnet-cityscapes/431/SPNet_cityscapes_best_model.pth
+    config_path: configs
+    img_fold: inputs
+    output_fold: outputs
+    img_rows: 513
+    img_cols: 1025
+    downsample: 3
+    bs: 1
+
+device: cuda

@@ -1,0 +1,30 @@
+arch: spnet
+data:
+    dataset: cityscapes
+    path: /home/lin/Documents/dataset/Cityscapes/
+    train_split: train
+    val_split: val
+model:
+    num_classes: 19
+
+training:
+    train_iters: 297500
+    batch_size: 4
+    accu_steps: 1
+    val_interval: 2975
+    print_interval: 100
+    img_size: [512, 1024]
+    argumentation:
+        random_hflip: 0.5
+        random_rotate: 8
+    optimizer:
+        lr: 0.01
+        momentum: 0.9
+    schedule:
+        gamma: 2
+    loss:
+        loss_weights: 0.8
+    resume:
+    visdom: False
+
+device: cuda
